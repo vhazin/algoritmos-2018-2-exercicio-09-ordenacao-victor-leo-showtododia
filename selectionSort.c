@@ -14,8 +14,8 @@ void swap(int *, int *);
 
 /*** Main Function: driver program to test merge sort function ***/
 int main(void){
-    int array[]  = {99,2,23,41,-5,23,-5,-10,4,8,-3};             /* Initializing random array           */
-    int length = sizeof(array) / sizeof(array[0]);               /* Finding number of elements in array */
+    int array[] = {99,2,23,41,-5,23,-5,-10,4,8,-3};              /* Initializing random array           */
+    int length  = sizeof(array) / sizeof(array[0]);              /* Finding number of elements in array */
     selectionSort(array, length);                                /* Merge sorting the array             */
     for(int index = 0; index < length; index++)                  /* Printing sorted array, by element   */
         printf("%d ", array[index]);
