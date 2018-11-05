@@ -17,9 +17,8 @@ int main(void){
     int array[]  = {99,2,23,41,-5,23,-5,-10,4,8,-3};             /* Initializing random array           */
     int length = sizeof(array) / sizeof(array[0]);               /* Finding number of elements in array */
     selectionSort(array, length);                                /* Merge sorting the array             */
-    for(int index = 0; index < length; index++){                 /* Printing sorted array, by element   */
+    for(int index = 0; index < length; index++)                  /* Printing sorted array, by element   */
         printf("%d ", array[index]);
-    }
 
 	return 0;
 }
@@ -33,13 +32,13 @@ void selectionSort(int *array, int length){
                 min = index;                                     /* Setting `min` to hold `index` of unpicked minimum value          */
         }  
         xorSwap(&array[min], &array[iterator]);                  /* Swaping values from `min` index w/ value at `iterator` index     */
-        // swap(&array[min], &array[iterator]);
+        // swap(&array[min], &array[iterator]);                  /* Swaping values from `min` index w/ value at `iterator` index     */
     }
 }
 
 /*** XOR Swap Function: uses the XOR bitwise operation to swap values ***/
 void xorSwap(int *min, int *iterator){
-    if (min == iterator)                                         /* Equal adressess leads to `*x = *x ^ *x` x3, which is 0           */
+    if (min == iterator)                                         /* Equal adressess lead to `*x = *x ^ *x` x3, which is 0            */
         return;
 
     *min      = *min ^ *iterator;                                /* Combining xy ->  x = x ^ y                                       */
@@ -49,7 +48,7 @@ void xorSwap(int *min, int *iterator){
 
 /*** Swap Function: uses call-by-reference to swap values ***/
 void swap(int *min, int *iterator){
-    int temp  = *min;                                            /* Saving `min` value in `temp`                                      */
-    *min      = *iterator;                                       /* Setting `min` value to `iterator` value                           */
-    *iterator = temp;                                            /* Setting `iterato` value to `temp` value (old `min`)               */
+    int temp  = *min;                                            /* Saving `min` value in `temp`                                     */
+    *min      = *iterator;                                       /* Setting `min` value to `iterator` value                          */
+    *iterator = temp;                                            /* Setting `iterato` value to `temp` value (old `min`)              */
 }
