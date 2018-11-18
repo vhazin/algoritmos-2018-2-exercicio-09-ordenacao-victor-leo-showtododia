@@ -44,7 +44,7 @@ void quickSort(int arr[], int low, int high)
     } 
 } 
   
- Funcao pra printar o Array
+//Funcao pra printar o Array
 void printArray(int arr[], int tam) 
 { 
  int i;
