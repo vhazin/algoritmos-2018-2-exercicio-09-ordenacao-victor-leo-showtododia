@@ -1,66 +1,65 @@
-#include <stdio.h>
- 
-void quick_sort(int[],int,int);
-int partition(int[],int,int);
- 
-int main()
-{
-    int a[50],n,i;
-    printf("How many elements?");
-    scanf("%d",&n);
-    printf("\nEnter array elements:");
-    
-    for(i=0;i<n;i++)
-        scanf("%d",&a[i]);
-        
-    quick_sort(a,0,n-1);
-    printf("\nArray after sorting:");
-    
-    for(i=0;i<n;i++)
-        printf("%d ",a[i]);
-    
-    return 0;        
+//QuickSort
+#include<stdio.h> 
+
+void swap(int* a, int* b) 
+{ 
+    int t = *a; 
+    *a = *b; 
+    *b = t; 
+} 
+  
+// Funcao pegando o ultimo numero como pivot
+int partition (int arr[], int low, int high) 
+{ 
+    int pivot = arr[high];    // pivot 
+    int i = (low - 1);  // Index do menor elemento
+  
+    for (int j = low; j <= high- 1; j++) 
+    { 
+        // Se o I for menor ou igual ao pivot 
+        if (arr[j] <= pivot) 
+        { 
+            i++;    // Incrementa o index do menor elemento e swap nele 
+            swap(&arr[i], &arr[j]); 
+        } 
+    } 
+    swap(&arr[i + 1], &arr[high]); 
+    return (i + 1); 
+} 
+  
+/* Funcao main que implementa o QuickSort 
+ arr[]-> Array, 
+  low-> Elemento inicial, 
+  high-> Elemento final*/
+void quickSort(int arr[], int low, int high) 
+{ 
+    if (low < high) 
+    { 
+        // inteiro para particionar o Index, colocando o array[p] no local correto
+        int pi = partition(arr, low, high); 
+  
+        // Separadamente classificando o array antes e dps da particao
+        quickSort(arr, low, pi - 1); 
+        quickSort(arr, pi + 1, high); 
+    } 
+} 
+  
+ Funcao pra printar o Array
+void printArray(int arr[], int tam) 
+{ 
+ int i;
+    for (i=0; i < tam; i++) 
+        printf("%d ", arr[i]); 
+    printf("n"); 
 }
- 
-void quick_sort(int a[],int l,int u)
-{
-    int j;
-    if(l<u)
-    {
-        j=partition(a,l,u);
-        quick_sort(a,l,j-1);
-        quick_sort(a,j+1,u);
-    }
-}
- 
-int partition(int a[],int l,int u)
-{
-    int v,i,j,temp;
-    v=a[l];
-    i=l;
-    j=u+1;
-    
-    do
-    {
-        do
-            i++;
-            
-        while(a[i]<v&&i<=u);
-        
-        do
-            j--;
-        while(v<a[j]);
-        
-        if(i<j)
-        {
-            temp=a[i];
-            a[i]=a[j];
-            a[j]=temp;
-        }
-    }while(i<j);
-    
-    a[l]=a[j];
-    a[j]=v;
-    
-    return(j);
-}
+  
+// Funcao Main, Arrumar essa funcao para poder receber os elementos gigantes de Hazin
+int main() 
+{ 
+    int arr[] = {10, 7, 8, 9, 1, 5}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    quickSort(arr, 0, n-1); 
+    printf("Array Organizado: n"); 
+    printArray(arr, n); 
+    return 0; 
+} 
