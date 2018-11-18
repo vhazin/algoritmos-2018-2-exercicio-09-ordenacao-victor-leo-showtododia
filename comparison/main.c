@@ -4,6 +4,8 @@
 #include "MergeSort.h"
 #include "SelectionSort.h"
 #include "InsertionSort.h"
+#include "QuickSortLAST.h"
+#include "QuickSortFirst.h"
 
 #define SIZE 10000
 
@@ -12,7 +14,7 @@ int main(void){
     for(int index = 0; index < SIZE; index++)
         scanf("%d", &array[index]);
 
-    char *algorithms[] = {"Insertion", "Heap", "Merge", "Selection", "Bubble"};
+    char *algorithms[] = {"Insertion", "Heap", "Merge", "Selection", "Bubble","QuickLAST","QuickFIRST"};
     clock_t start, stop;
     while(counter < 5){
         start = clock();
@@ -27,6 +29,10 @@ int main(void){
             SelectionSortAlgorithm(array, SIZE);
         if(counter == 4)
             BubbleSortAlgorithm(array, SIZE);
+        if(counter == 5)
+            QuickSortLASTAlgorithm(array,SIZE);
+        if(counter == 6)
+            QuickSortFirstAlgorithm(array,SIZE);
         
         stop = clock();
         double time_taken = ((double)(stop - start) / CLOCKS_PER_SEC);
