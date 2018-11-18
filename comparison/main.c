@@ -5,7 +5,7 @@
 #include "SelectionSort.h"
 #include "InsertionSort.h"
 #include "QuickSortLAST.h"
-#include "QuickSortFirst.h"
+#include "QuickSortFIRSTt.h"
 
 #define SIZE 10000
 
