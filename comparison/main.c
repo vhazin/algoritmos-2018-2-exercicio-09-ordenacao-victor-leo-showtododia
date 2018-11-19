@@ -1,3 +1,4 @@
+/* Random input generated w/ https://andrew.hedges.name/experiments/random/ */
 #include <time.h>
 #include "BubbleSort.h"
 #include "HeapSort.h"
@@ -7,16 +8,16 @@
 #include "QuickSortLAST.h"
 #include "QuickSortFIRSTt.h"
 
-#define SIZE 10000
+#define SIZE 100000
 
 int main(void){
     int array[SIZE], counter = 0;
     for(int index = 0; index < SIZE; index++)
         scanf("%d", &array[index]);
 
-    char *algorithms[] = {"Insertion", "Heap", "Merge", "Selection", "Bubble","QuickLAST","QuickFIRST"};
+    char *algorithms[] = {"Insertion", "Heap", "Merge", "Selection", "Bubble", "QuickLAST","QuickFIRST"};
     clock_t start, stop;
-    while(counter < 5){
+    while(counter < 7){
         start = clock();
 
         if(!counter)
@@ -29,11 +30,11 @@ int main(void){
             SelectionSortAlgorithm(array, SIZE);
         if(counter == 4)
             BubbleSortAlgorithm(array, SIZE);
-        if(counter == 5)
-            QuickSortLASTAlgorithm(array,SIZE);
-        if(counter == 6)
-            QuickSortFirstAlgorithm(array,SIZE);
-        
+        if (counter == 5)
+            QuickSortLASTAlgorithm(array, 0, SIZE);
+        if (counter == 6)
+            QuickSortFirstAlgorithm(array, 0, SIZE);
+
         stop = clock();
         double time_taken = ((double)(stop - start) / CLOCKS_PER_SEC);
         printf("\n%s Sort: %f milliseconds", algorithms[counter], time_taken);
