@@ -1,6 +1,0 @@
-
-Insertion Sort: 0.134891 milliseconds
-Heap Sort: 0.003253 milliseconds
-Merge Sort: 0.002288 milliseconds
-Selection Sort: 0.201387 milliseconds
-Bubble Sort: 0.181606 milliseconds
