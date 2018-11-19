@@ -27,8 +27,8 @@ void Heapify(int *array, int length, int root){
 		largest = right;
 
 	if (largest != root){
-        // swap(&array[root], &array[largest]);
-		xorSwap(&array[root], &array[largest]);
+        swap(&array[root], &array[largest]);
+		// xorSwap(&array[root], &array[largest]);
 		Heapify(array, length, largest);
 	}
 }
