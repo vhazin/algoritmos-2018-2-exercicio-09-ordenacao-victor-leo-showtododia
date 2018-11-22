@@ -1,4 +1,3 @@
-// BubbleSort Code, by Victor & Leo
 #include <stdio.h>
 #include "swap.h"
 

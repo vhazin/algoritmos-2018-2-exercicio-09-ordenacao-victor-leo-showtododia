@@ -1,6 +1,3 @@
-#HeapSort Code by Victor & Leo.
-#Contato para Shows 555-111-222.
-
 #include <stdio.h>
 
 void ArrayDaMassa(int []);

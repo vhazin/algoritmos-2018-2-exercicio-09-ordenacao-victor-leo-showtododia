@@ -1,12 +1,12 @@
 /* Random input generated w/ https://andrew.hedges.name/experiments/random/ */
 #include <time.h>
-#include "BubbleSort.h"
+#include "InsertionSort.h"
 #include "HeapSort.h"
 #include "MergeSort.h"
 #include "SelectionSort.h"
-#include "InsertionSort.h"
+#include "BubbleSort.h"
 #include "QuickSortLAST.h"
-#include "QuickSortFIRSTt.h"
+#include "QuickSortFIRST.h"
 
 #define SIZE 100000
 
@@ -37,9 +37,9 @@ int main(void){
 
         stop = clock();
         double time_taken = ((double)(stop - start) / CLOCKS_PER_SEC);
+        
         printf("\n%s Sort: %f milliseconds", algorithms[counter], time_taken);
         counter++;
     }
-
     return 0;
 }

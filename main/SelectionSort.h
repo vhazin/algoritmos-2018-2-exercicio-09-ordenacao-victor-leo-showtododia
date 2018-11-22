@@ -16,8 +16,8 @@ int SelectionSortAlgorithm(int *array, int length){
             if (array[index] < array[min])                       /* Comparing values of `min` with indexes to the right (index)      */
                 min = index;                                     /* Setting `min` to hold `index` of unpicked minimum value          */
         }
-        swap(&array[min], &array[iterator]);                  /* Swaping values from `min` index w/ value at `iterator` index     */
-        // xorSwap(&array[min], &array[iterator]);                  /* Swaping values from `min` index w/ value at `iterator` index     */
+        swap(&array[min], &array[iterator]);                      /* Swaping values from `min` index w/ value at `iterator` index     */
+        // xorSwap(&array[min], &array[iterator]);                /* Swaping values from `min` index w/ value at `iterator` index     */
     }
     return 0;
 }

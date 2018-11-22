@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "swap.h"
 
 int HeapSortAlgorithm(int *, int);
