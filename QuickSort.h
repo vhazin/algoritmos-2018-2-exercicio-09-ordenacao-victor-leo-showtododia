@@ -7,25 +7,35 @@ int LomutoPartition(int *, int, int);
 int HoarePartition (int *, int, int);
 int RandomPivot(int *, int, int, int);
 
-/* Main Function */
-void QuickSortAlgorithm(int* array, int start, int end, int algorithm) {
+void QuickSortLomutoAlgorithm(int* array, int start, int end) {
     if (start < end){
-        int pi; /* pi is partitioning index, array[p] is now at right place */
-        
-        if (algorithm == 0)
-            pi = LomutoPartition(array, start, end);
-        if (algorithm == 1)
-            pi = HoarePartition(array, start, end);
-        if (algorithm == 2)
-            pi = RandomPivot(array, start, end, 0);
-        if (algorithm == 3)
-            pi = RandomPivot(array, start, end, 1);
-        
-        QuickSortAlgorithm(array, start, pi - 1, algorithm);    /* Separately sort elements before partition and after partition */
-        QuickSortAlgorithm(array, pi + 1, end, algorithm);
+        int pi = LomutoPartition(array, start, end);
+        QuickSortLomutoAlgorithm(array, start, pi - 1); /* Separately sort elements before partition and after partition */
+        QuickSortLomutoAlgorithm(array, pi + 1, end);
+    }
+}
 
-        // for (int index = 0; index < end; index++)
-        //     printf("%d, ", array[index]);
+void QuickSortLomutoRandomAlgorithm(int* array, int start, int end) {
+    if (start < end){ 
+        int pi = RandomPivot(array, start, end, 0);
+        QuickSortLomutoRandomAlgorithm(array, start, pi - 1); /* Separately sort elements before partition and after partition */
+        QuickSortLomutoRandomAlgorithm(array, pi + 1, end);
+    }
+}
+
+void QuickSortHoareAlgorithm(int* array, int start, int end) {
+    if (start < end){    
+        int pi = HoarePartition(array, start, end);
+        QuickSortHoareAlgorithm(array, start, pi); /* Separately sort elements before partition and after partition */
+        QuickSortHoareAlgorithm(array, pi + 1, end);
+    }
+}
+
+void QuickSortHoareRandomAlgorithm(int* array, int start, int end) {
+    if (start < end){ 
+        int pi = RandomPivot(array, start, end, 1);
+        QuickSortHoareRandomAlgorithm(array, start, pi); /* Separately sort elements before partition and after partition */
+        QuickSortHoareRandomAlgorithm(array, pi + 1, end);
     }
 }
 

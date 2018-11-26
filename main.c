@@ -7,7 +7,7 @@
 #include "BubbleSort.h"
 #include "QuickSort.h"
 
-#define SIZE 100
+#define SIZE 10000
 
 int main(void){
     int array[SIZE], counter = 0;
@@ -30,18 +30,18 @@ int main(void){
         if(counter == 4)
             BubbleSortAlgorithm(array, SIZE);
         if (counter == 5)
-            QuickSortAlgorithm(array, 0, SIZE, 0);
+            QuickSortLomutoAlgorithm(array, 0, SIZE);
         if (counter == 6)
-            QuickSortAlgorithm(array, 0, SIZE, 1);
+            QuickSortLomutoRandomAlgorithm(array, 0, SIZE);
         if (counter == 7)
-            QuickSortAlgorithm(array, 0, SIZE, 2);
+            QuickSortHoareAlgorithm(array, 0, SIZE);
         if (counter == 8)
-            QuickSortAlgorithm(array, 0, SIZE, 3);
+            QuickSortHoareRandomAlgorithm(array, 0, SIZE);
 
         stop = clock();
         double time_taken = ((double)(stop - start) / CLOCKS_PER_SEC);
         
-        printf("\n%s Sort: %f milliseconds \n\n", algorithms[counter], time_taken);
+        printf("\n%s Sort: %f seconds", algorithms[counter], time_taken);
         counter++;
     }
     return 0;
