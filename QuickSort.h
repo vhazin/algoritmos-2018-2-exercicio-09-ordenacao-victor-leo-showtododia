@@ -3,35 +3,45 @@
 #include "swap.h"
 
 /* Prototype Functions */
-int RandomPivot(int *, int, int);
 int LomutoPartition(int *, int, int);
 int HoarePartition (int *, int, int);
+int RandomPivot(int *, int, int, int);
 
 /* Main Function */
-void QuickSortAlgorithm(int* array, int start, int end) {
+void QuickSortAlgorithm(int* array, int start, int end, int algorithm) {
     if (start < end){
-
-        RandomPivot(array, start, end);
+        int pi; /* pi is partitioning index, array[p] is now at right place */
         
-        int pi = HoarePartition(array, start, end); /* pi is partitioning index, array[p] is now at right place */  
-        // int pi = LomutoPartition(array, start, end);
+        if (algorithm == 0)
+            pi = LomutoPartition(array, start, end);
+        if (algorithm == 1)
+            pi = HoarePartition(array, start, end);
+        if (algorithm == 2)
+            pi = RandomPivot(array, start, end, 0);
+        if (algorithm == 3)
+            pi = RandomPivot(array, start, end, 1);
+        
+        QuickSortAlgorithm(array, start, pi - 1, algorithm);    /* Separately sort elements before partition and after partition */
+        QuickSortAlgorithm(array, pi + 1, end, algorithm);
 
-        QuickSortAlgorithm(array, start, pi - 1);    /* Separately sort elements before partition and after partition */
-        QuickSortAlgorithm(array, pi + 1, end);
+        // for (int index = 0; index < end; index++)
+        //     printf("%d, ", array[index]);
     }
 }
 
 /* Random Pivot Choice for Each Approach */
-int RandomPivot(int *array, int start, int end){
+int RandomPivot(int *array, int start, int end, int algorithm){
     /* Generate a random number in between start & end */
     srand(time(NULL)); 
     int random = start + rand() % (end - start);
 
-    swap(&array[random], &array[start]);
-    return HoarePartition(array, start, end);
-
-    // swap(&array[random], &array[end]);
-    // return LomutoPartition(array, start, end);
+    if (algorithm == 0){
+        swap(&array[random], &array[end]);
+        return LomutoPartition(array, start, end);
+    } else {
+        swap(&array[random], &array[start]);
+        return HoarePartition(array, start, end);
+    }
 }
 
 /* 

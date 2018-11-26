@@ -5,19 +5,18 @@
 #include "MergeSort.h"
 #include "SelectionSort.h"
 #include "BubbleSort.h"
-#include "QuickSortLAST.h"
-#include "QuickSortFIRST.h"
+#include "QuickSort.h"
 
-#define SIZE 100000
+#define SIZE 100
 
 int main(void){
     int array[SIZE], counter = 0;
     for(int index = 0; index < SIZE; index++)
         scanf("%d", &array[index]);
 
-    char *algorithms[] = {"Insertion", "Heap", "Merge", "Selection", "Bubble", "QuickLAST","QuickFIRST"};
+    char *algorithms[] = {"Insertion", "Heap", "Merge", "Selection", "Bubble", "Lomuto Quick","Hoare Quick", "Lomuto Random Quick", "Hoare Random Quick"};
     clock_t start, stop;
-    while(counter < 7){
+    while(counter < 9){
         start = clock();
 
         if(!counter)
@@ -31,14 +30,18 @@ int main(void){
         if(counter == 4)
             BubbleSortAlgorithm(array, SIZE);
         if (counter == 5)
-            QuickSortLASTAlgorithm(array, 0, SIZE);
+            QuickSortAlgorithm(array, 0, SIZE, 0);
         if (counter == 6)
-            QuickSortFirstAlgorithm(array, 0, SIZE);
+            QuickSortAlgorithm(array, 0, SIZE, 1);
+        if (counter == 7)
+            QuickSortAlgorithm(array, 0, SIZE, 2);
+        if (counter == 8)
+            QuickSortAlgorithm(array, 0, SIZE, 3);
 
         stop = clock();
         double time_taken = ((double)(stop - start) / CLOCKS_PER_SEC);
         
-        printf("\n%s Sort: %f milliseconds", algorithms[counter], time_taken);
+        printf("\n%s Sort: %f milliseconds \n\n", algorithms[counter], time_taken);
         counter++;
     }
     return 0;

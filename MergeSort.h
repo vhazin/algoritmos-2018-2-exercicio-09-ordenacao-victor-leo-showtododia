@@ -28,9 +28,12 @@ int MergeSortAlgorithm(int *array, int length){
     MergeSortAlgorithm(left, mid);                            /* Sorting `left` array: [left ... mid]               */
     MergeSortAlgorithm(right, length - mid);                  /* Sorting `right` array: [mid + 1 ... right]         */
     Merge(array, length, left, right);                        /* Merging `left` and `right` into `array`            */
-    
+
     free(left);                                               /* freeing allocated memory for `left` subarray       */
     free(right);                                              /* freeing allocated memory for `right` subarray      */
+
+    // for (int index = 0; index < length; index++)
+    //     printf("%d, ", array[index]);
 
     return 0;
 }

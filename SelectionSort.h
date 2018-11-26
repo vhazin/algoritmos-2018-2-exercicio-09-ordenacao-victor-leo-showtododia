@@ -19,5 +19,9 @@ int SelectionSortAlgorithm(int *array, int length){
         swap(&array[min], &array[iterator]);                      /* Swaping values from `min` index w/ value at `iterator` index     */
         // xorSwap(&array[min], &array[iterator]);                /* Swaping values from `min` index w/ value at `iterator` index     */
     }
+
+    // for (int index = 0; index < length; index++)
+    //     printf("%d, ", array[index]);
+    
     return 0;
 }
